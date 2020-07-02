@@ -1,64 +1,82 @@
-import React from "react";
+import React from 'react'
 import {
   Navbar,
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
+  NavLink as RSNavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-} from "reactstrap";
-import { Link } from 'react-router-dom';
-import { LogoPic, ItalicText } from "./styles";
+} from 'reactstrap'
+import {Link, NavLink as RRNavLink} from 'react-router-dom'
+import {LogoPic, ItalicText} from './styles'
 
-import Logo from "../../assets/images/logo.PNG";
+import Logo from '../../assets/images/logo.PNG'
 
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const textStyles = {
-  textTransform: "uppercase",
-  fontFamily: "Archivo Narrow, sans-serif",
-  fontStyle: "normal",
-  fontWeight: "normal",
-};
+  textTransform: 'uppercase',
+  fontFamily: 'Archivo Narrow, sans-serif',
+  fontStyle: 'normal',
+  fontWeight: 'normal',
+}
 
 export function NavBar() {
   return (
-    <div style={{ boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)" }}>
+    <div style={{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)'}}>
       <Navbar color="white" light expand="md">
-        <NavbarBrand href="/">
+        <NavbarBrand to="/">
           <LogoPic src={Logo} alt="Logo" />
         </NavbarBrand>
         <Nav className="mr-auto" navbar style={textStyles}>
           <NavItem>
-            <NavLink href="/about">How does this work?</NavLink>
+            <RSNavLink tag={RRNavLink} to="/about">
+              How does this work?
+            </RSNavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/about-us">Who we are</NavLink>
+            <RSNavLink tag={RRNavLink} to="/about-us">
+              Who we are
+            </RSNavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/contact">Contact us</NavLink>
+            <RSNavLink tag={RRNavLink} to="/contact">
+              Contact us
+            </RSNavLink>
           </NavItem>
         </Nav>
-        <Nav navbar style={{ float: "right", margin: 0 }}>
+        <Nav navbar style={{float: 'right', margin: 0}}>
           <NavItem style={textStyles}>
-            <NavLink href="/get-help" style={{fontStyle: "italic", fontWeight: 800, color: "#000"}}>Get help</NavLink>
+            <RSNavLink
+              tag={RRNavLink}
+              to="/get-help"
+              style={{fontStyle: 'italic', fontWeight: 800, color: '#000'}}
+            >
+              Get help
+            </RSNavLink>
           </NavItem>
           <UncontrolledDropdown nav inNavbar style={textStyles}>
-            <DropdownToggle nav caret style={{fontWeight: 800, color: "#FD8E7B"}}>
+            <DropdownToggle
+              nav
+              caret
+              style={{fontWeight: 800, color: '#FD8E7B'}}
+            >
               Donate
             </DropdownToggle>
             <DropdownMenu right>
-              <DropdownItem tag={Link} to="/donor-form">Give Items</DropdownItem>
+              <DropdownItem tag={Link} to="/donor-form">
+                Give Items
+              </DropdownItem>
               <DropdownItem>Be a Patron</DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>
       </Navbar>
     </div>
-  );
+  )
 }
 
-export default NavBar;
+export default NavBar
